@@ -1,0 +1,169 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+a z",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus"
+  },
+  // Toggle between terminal and editor focus
+  {
+    "key": "ctrl+k a",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+k a",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+
+  // Place your key bindings in this file to override the defaults
+  // NAVIGATION
+  {
+    "key": "ctrl+shift+a",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  // FILE TREE
+  {
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+e"
+  },
+  {
+    "command": "workbench.files.action.focusFilesExplorer",
+    "key": "ctrl+e",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "renameFile",
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "command": "deleteFile",
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+
+  // EXTRA
+  {
+    "key": "ctrl+shift+5",
+    "command": "editor.emmet.action.matchTag"
+  },
+  {
+    "key": "ctrl+z",
+    "command": "workbench.action.toggleZenMode"
+  },
+  {
+    "key": "alt+p",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+        "key": "ctrl+oem_1",
+        "command": "cursorEnd",
+        "when": "textInputFocus"
+    },
+    {
+      "key": "ctrl+shift+oem_1",
+      "command": "-breadcrumbs.focus",
+      "when": "breadcrumbsPossible && breadcrumbsVisible"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+a",
+      "command": "-testing.debugAll"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+e",
+      "command": "-testing.debugFailTests"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+l",
+      "command": "-testing.debugLastRun"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+c",
+      "command": "-testing.debugAtCursor",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+f",
+      "command": "-testing.debugCurrentFile",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+m",
+      "command": "-testing.openOutputPeek"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+r",
+      "command": "-testing.refreshTests",
+      "when": "testing.canRefresh"
+    },
+    {
+      "key": "ctrl+oem_1 e",
+      "command": "-testing.reRunFailTests"
+    },
+    {
+      "key": "ctrl+oem_1 l",
+      "command": "-testing.reRunLastRun"
+    },
+    {
+      "key": "ctrl+oem_1 a",
+      "command": "-testing.runAll"
+    },
+    {
+      "key": "ctrl+oem_1 c",
+      "command": "-testing.runAtCursor",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+oem_1 f",
+      "command": "-testing.runCurrentFile",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+o",
+      "command": "-testing.showMostRecentOutput",
+      "when": "testing.hasAnyResults"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+i",
+      "command": "-testing.toggleInlineTestOutput"
+    },
+    {
+      "key": "ctrl+oem_1 ctrl+x",
+      "command": "-testing.cancelRun"
+    }
+]
