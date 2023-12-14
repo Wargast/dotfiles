@@ -1,0 +1,7 @@
+alias grep='grep --color -n'
+alias hg='history | grep'
+alias psg='ps -ef | grep -v "grep" | grep'
+
+alias h='history'
+alias ll="ls -l -h"
+alias la="ls -a"
