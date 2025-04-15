@@ -4,6 +4,8 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 echo "export PATH=\"$PATH:/opt/nvim-linux-x86_64/bin\"" >>~/.bashrc
 
-git clone -b pro https://github.com/Wargast/dotfiles.git ~/
+rm -rf ~/dotfiles
+git clone -b pro https://github.com/Wargast/dotfiles.git ~/dotfiles
 cd ~/.config/
-ln -s ~/dotfiles/nvim .
+rm -rf nvim
+ln -sf ~/dotfiles/nvim nvim
