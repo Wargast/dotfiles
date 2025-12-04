@@ -1,18 +1,16 @@
 local wezterm = require("wezterm")
-local mux = wezterm.mux
 
-wezterm.on("gui-startup", function(window)
+local mux = wezterm.mux
+wezterm.on("gui-startup", function(cmd)
 	local tab, pane, window = mux.spawn_window(cmd or {})
-	local gui_window = window:gui_window()
-	gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
+	window:gui_window():maximize()
 end)
+
 return {
 	color_scheme = "Catppuccin Mocha",
 	enable_tab_bar = false,
 	font_size = 11.0,
 	font = wezterm.font("JetBrains Mono"),
-	macos_window_background_blur = 30,
-	native_macos_fullscreen_mode = true,
 	audible_bell = "Disabled",
 
 	window_background_opacity = 0.98,

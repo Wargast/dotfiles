@@ -5,3 +5,7 @@ alias psg='ps -ef | grep -v "grep" | grep'
 alias h='history'
 alias ll="ls -l -h"
 alias la="ls -a"
+
+alias cat="batcat"
+alias nv=nvim
+alias vim=nvim
