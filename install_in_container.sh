@@ -16,6 +16,7 @@ sudo install lazygit -D -t /usr/local/bin/
 
 rm -rf ~/dotfiles
 git clone -b pro --depth 1 https://github.com/Wargast/dotfiles.git ~/dotfiles
+mkdir -p ~/.config/
 cd ~/.config/
 rm -rf nvim
 ln -sf ~/dotfiles/nvim nvim
