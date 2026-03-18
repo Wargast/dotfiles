@@ -7,12 +7,14 @@ rm nvim-linux-x86_64.tar.gz
 echo "export PATH=\$PATH:/opt/nvim-linux-x86_64/bin" >>~/.bashrc
 
 sudo apt update
-sudo apt install -y fzf ripgrep fd-find python3.10-venv bat
+sudo apt install -y fzf ripgrep fd-find python3.10-venv bat imagemagick
 
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
+
+curl -fsSL https://opencode.ai/install | bash
 
 rm -rf ~/dotfiles
 git clone -b pro --depth 1 https://github.com/Wargast/dotfiles.git ~/dotfiles
