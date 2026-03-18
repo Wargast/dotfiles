@@ -6,6 +6,19 @@ wezterm.on("gui-startup", function(cmd)
 	window:gui_window():maximize()
 end)
 
+local light_scheme = "Catppuccin Latte"
+local dark_scheme = "Catppuccin Mocha"
+
+wezterm.on("toggle-color-scheme", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if overrides.color_scheme == light_scheme then
+		overrides.color_scheme = dark_scheme
+	else
+		overrides.color_scheme = light_scheme
+	end
+	window:set_config_overrides(overrides)
+end)
+
 return {
 	color_scheme = "Catppuccin Mocha",
 	enable_tab_bar = false,
@@ -30,5 +43,13 @@ return {
 			mods = "CTRL",
 			action = wezterm.action.OpenLinkAtMouseCursor,
 		},
+	},
+	keys = {
+		{
+			key = "m",
+			mods = "SHIFT|CTRL",
+			action = wezterm.action({ EmitEvent = "toggle-color-scheme" }),
+		},
+		-- other settings...
 	},
 }
