@@ -1,0 +1,41 @@
+
+_setup_container_completions() {
+  local cur prev container_found
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  prev="${COMP_WORDS[COMP_CWORD - 1]}"
+  container_found=""
+
+  # 1. Chercher si un nom de conteneur a déjà été saisi ailleurs dans la commande
+  for ((i = 0; i < ${#COMP_WORDS[@]}; i++)); do
+    if [[ ${COMP_WORDS[i]} == "-c" ]]; then
+      container_found="${COMP_WORDS[i + 1]}"
+      break
+    fi
+  done
+
+  case "${prev}" in
+  -c)
+    # Suggérer les noms des conteneurs en cours d'exécution
+    local containers=$(docker ps --format '{{.Names}}')
+    COMPREPLY=($(compgen -W "${containers}" -- "${cur}"))
+    return 0
+    ;;
+  -u)
+    # Si on a trouvé un conteneur, on interroge ses utilisateurs
+    if [[ -n "$container_found" ]]; then
+      # On récupère seulement les utilisateurs qui ont un shell (souvent plus propre)
+      # Ou simplement tous : cut -d: -f1 /etc/passwd
+      local users=$(docker exec "$container_found" cut -d: -f1 /etc/passwd 2>/dev/null)
+      COMPREPLY=($(compgen -W "${users}" -- "${cur}"))
+    fi
+    return 0
+    ;;
+  *)
+    # Suggérer les flags
+    COMPREPLY=($(compgen -W "-u -c -h" -- "${cur}"))
+    return 0
+    ;;
+  esac
+}
+
+complete -F _setup_container_completions setup_container.sh ./setup_container.sh
