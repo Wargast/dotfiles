@@ -38,8 +38,8 @@ echo "🔑 Copie des clés SSH..."
 # Petite sécurité ajoutée : s'assurer que le dossier .ssh existe dans le conteneur avant de copier
 docker exec --user "$USERNAME" "$CONTAINER" mkdir -p /home/"$USERNAME"/.ssh
 
-docker cp ~/.ssh/id_rsa.pub "$CONTAINER":/home/"$USERNAME"/.ssh/
-docker cp ~/.ssh/id_rsa "$CONTAINER":/home/"$USERNAME"/.ssh/
+docker cp ~/.ssh/ "$CONTAINER":/home/"$USERNAME"/
+docker cp ~/.gitconfig "$CONTAINER":/home/"$USERNAME"/
 docker cp ~/.opencode/ "$CONTAINER":/home/"$USERNAME"/
 
 echo "✅ Terminé avec succès !"
