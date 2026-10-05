@@ -6,18 +6,21 @@ rm nvim-linux-x86_64.tar.gz
 
 echo "export PATH=\$PATH:/opt/nvim-linux-x86_64/bin" >>~/.bashrc
 
-wget https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-musl_10.4.2_amd64.deb
-sudo apt install ./fd-musl_10.4.2_amd64.deb
+curl -fsSL https://yazi-rs.github.io/builds/yazi-keyring.gpg | sudo tee /usr/share/keyrings/yazi-keyring.gpg >/dev/null
+echo 'deb [signed-by=/usr/share/keyrings/yazi-keyring.gpg] https://yazi-rs.github.io/builds/ stable main' | sudo tee /etc/apt/sources.list.d/yazi.list >/dev/null
 
 sudo apt update
-sudo apt install -y fzf ripgrep fd-find python3-venv bat imagemagick
+sudo apt install -y fzf ripgrep python3-venv bat imagemagick yazi
+
+wget https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-musl_10.4.2_amd64.deb
+sudo apt install ./fd-musl_10.4.2_amd64.deb
 
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
 
-curl -fsSL https://opencode.ai/install | bash
+# curl -fsSL https://opencode.ai/install | bash
 
 rm -rf ~/dotfiles
 git clone -b pro --depth 1 https://github.com/Wargast/dotfiles.git ~/dotfiles
